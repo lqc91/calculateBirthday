@@ -9,10 +9,11 @@ function pmt(str){
 // method 1
 function calDate(year,month,date){
 	var day=0;
-	for(var i=0,j=0;i<month-1;i++){
+	for(var i=1,j=0;i<month;i++){
 		switch(i){
 			case 2:
-				if(year%4===0){
+				// 闰年判断规律：四年一闰，百年不闰，四百年再闰
+				if((year%4==0 && year%100!=0) || year%400==0){
 					j=29;
 				}else{
 					j=28;
@@ -36,7 +37,7 @@ function calDate(year,month,date){
 /*function calDate(year,month,date){
 	var day=0,
 		monArr=[31,28,31,30,31,30,31,31,30,31,30,31];
-	if(year%4===0 && month>2){
+	if((year%4==0 && year%100!=0) || year%400==0){
 		monArr[1]=29;
 	}
 	for(var i=0;i<month-1;i++){
